@@ -6,6 +6,7 @@ import 'package:tutorial/layout/cubit/states.dart';
 import 'package:tutorial/shared/components/constants.dart';
 
 import '../../../shared/components/components.dart';
+import '../Login/cubit/cubit.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -15,17 +16,21 @@ class SettingsScreen extends StatelessWidget {
     var emailController = TextEditingController();
     var phoneController = TextEditingController();
     return BlocConsumer<ShopCubit, ShopStates>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var cubit = ShopCubit.get(context);
+      listener: (context, state)
+      {
 
-        var model = cubit.UserModel!;
-        name.text = model.data!.name.toString();
+      },
+      builder: (context, state) {
+        var model = ShopCubit.get(context).UserModel;
+        if (model == null) {
+          return Center(child: CircularProgressIndicator());
+        }
+        name.text = model!.data!.name!.toString();
         emailController.text = model.data!.email.toString();
         phoneController.text = model.data!.phone.toString();
 
         return ConditionalBuilder(
-          condition: cubit.UserModel != null,
+          condition:  ShopCubit.get(context).UserModel != null,
           builder: (context) => Scaffold(
             body: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -83,7 +88,7 @@ class SettingsScreen extends StatelessWidget {
                       defaultButton(
                           function: () {
                             if (formKey.currentState!.validate()) {
-                              cubit.updateUserdata(
+                              ShopCubit.get(context).updateUserdata(
                                   name: name.text,
                                   email: emailController.text,
                                   phone: phoneController.text);
@@ -97,14 +102,15 @@ class SettingsScreen extends StatelessWidget {
                           function: () {
                             signOut(context);
                           },
-                          text: 'Log Out'),
+                          text: 'Log Out'
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
           ),
-          fallback: (context) => CircularProgressIndicator(),
+          fallback: (context) => Center(child: const CircularProgressIndicator()),
         );
       },
     );

@@ -23,7 +23,8 @@ Future<void> main() async {
   } else {
     initialScreen = LoginScreen();
   }
-  runApp(MyApp(
+  runApp(
+      MyApp(
     initialScreen: initialScreen,
   ));
 }
