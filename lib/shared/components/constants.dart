@@ -7,7 +7,9 @@ String HOME='home';
 String Get_Categories='categories';
 String Get_Profile='profile';
 String Update_Profile='update-profile';
+String FAVOURITES = 'favorites';
 String? token = '';
+
 
 
 void signOut(context) {

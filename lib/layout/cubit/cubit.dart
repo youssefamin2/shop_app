@@ -101,6 +101,20 @@ DioHelper.getData(url: HOME,token: token).then((value){
       emit(ShopErrorUpdateUserStates());
     });
   }
+void changeFavourite(int productID)
+{
+  DioHelper.PostData(
+      url: FAVOURITES,
+      token: token,
+      data:
+      {
+        'product_id':productID
 
+      }).then((value){
 
+  }).catchError((error){
+    print(error.toString());
+  });
+
+}
 }
