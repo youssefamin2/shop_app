@@ -135,7 +135,8 @@ class ProductsScreen extends StatelessWidget {
                           onPressed: () {},
                           icon: const Icon(
                             Icons.favorite_border,
-                          )),
+                          )
+                      ),
                     ],
                   ),
                 ],

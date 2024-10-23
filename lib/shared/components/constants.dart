@@ -3,6 +3,7 @@ import '../network/local/CacheHelper.dart';
 import 'components.dart';
 
 String LOGIN='login';
+String REGISTER='register';
 String HOME='home';
 String Get_Categories='categories';
 String Get_Profile='profile';

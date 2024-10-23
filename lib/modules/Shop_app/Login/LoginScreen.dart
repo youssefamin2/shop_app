@@ -9,6 +9,7 @@ import 'package:tutorial/shared/components/components.dart';
 import 'package:tutorial/shared/network/local/CacheHelper.dart';
 
 import '../../../shared/components/constants.dart';
+import '../Register/RegisterScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -130,8 +131,8 @@ class LoginScreen extends StatelessWidget {
                                 }
                               },
                             ),
-                            fallback: (context) => Center(
-                                child: const CircularProgressIndicator()),
+                            fallback: (context) => const Center(
+                                child: CircularProgressIndicator()),
                           ),
                         ),
                         const SizedBox(
@@ -143,8 +144,9 @@ class LoginScreen extends StatelessWidget {
                             const Text("Don't have an account?"),
                             const Spacer(),
                             TextButton(
-                              onPressed: () {
-                                // Navigate to register screen
+                              onPressed: ()
+                              {
+                                navigateTo(context,const RegisterScreen());
                               },
                               child: const Text('Register Now'),
                             ),
