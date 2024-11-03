@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
       builder: (context, state) {
         var model = ShopCubit.get(context).UserModel;
         if (model == null) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         name.text = model!.data!.name!.toString();
         emailController.text = model.data!.email.toString();
@@ -94,7 +94,7 @@ class SettingsScreen extends StatelessWidget {
                             }
                           },
                           text: 'Update'),
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
                       ),
                       defaultButton(

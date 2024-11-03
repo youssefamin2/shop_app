@@ -16,7 +16,9 @@ String? token = '';
 void signOut(context) {
   CacheHelper.removeData(key: "token").then((value) {
     if (value) {
+      token = null;
       navigateAndFinish(context, LoginScreen());
+    } else {
     }
   });
 }

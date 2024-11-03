@@ -27,8 +27,8 @@ class RegisterScreen extends StatelessWidget {
           if(state is ShopRegisterSuccessState){
             if(state.loginModel.status!)
             {
-              CacheHelper.saveData(key: 'token', value: state.loginModel.data?.token).then((value) {
-                token = state.loginModel.data!.token!;
+              CacheHelper.saveData(key: 'token', value: state.loginModel.data!.token).then((value) {
+                token = state.loginModel.data!.token;
 
                 navigateAndFinish(
                   context,

@@ -8,7 +8,7 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates> {
   ShopRegisterCubit() : super(InitialShopRegisterState());
 
   static ShopRegisterCubit get(context) => BlocProvider.of(context);
-  LoginModel? registerUser;
+  LoginModel? loginModel;
 
   void userRegister({
     String? name,
@@ -24,8 +24,8 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates> {
       'password': password,
       'phone': phone,
     }).then((value) {
-      registerUser=LoginModel.fromJson(value.data);
-      emit(ShopRegisterSuccessState(registerUser!));
+      loginModel=LoginModel.fromJson(value.data);
+      emit(ShopRegisterSuccessState(loginModel!));
     }).catchError((error) {
       emit(ShopRegisterErrorState(error));
       print(error.toString());

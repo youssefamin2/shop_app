@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../layout/cubit/cubit.dart';
+
 Widget defaultFormFeild({
   required TextEditingController controller,
   required TextInputType type,
@@ -126,7 +128,7 @@ Widget buildCategoriesItem(model)=>Padding(
         fit: BoxFit.cover,
 
       ),
-      SizedBox(width: 20.0,),
+      const SizedBox(width: 20.0,),
       Text(
         '${model.name}',
         style: const TextStyle(
@@ -135,8 +137,8 @@ Widget buildCategoriesItem(model)=>Padding(
         ),
 
       ),
-      Spacer(),
-      Icon(
+      const Spacer(),
+      const Icon(
         Icons.arrow_forward_ios,
       ),
 
@@ -150,3 +152,103 @@ void navigateTo(context, widget) => Navigator.push(
     builder: (context) => widget,
   ),
 );
+
+
+
+Widget buildListProduct(model,context,{bool isOldPrice=true})
+{
+  return Padding(
+    padding: const EdgeInsets.all(20.0),
+    child: SizedBox(
+      height: 120.0,
+      child:  Row(
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.bottomStart,
+            children: [
+              Image(
+                image: NetworkImage(model.image.toString()),
+                width: 120.0,
+                height: 120.0,
+              ),
+              if (model.discount != 0 && isOldPrice)
+              Container(
+                height: 15,
+                alignment: AlignmentDirectional.bottomStart,
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                color: Colors.red,
+                child: const Text(
+                  'Discount',
+                  style:TextStyle(
+                    fontSize: 8.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+
+          ),
+          const SizedBox(
+            width: 20.0,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  model.name.toString(),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    height: 1.3,
+                  ),
+                ),
+                const Spacer(),
+                Row(
+                  children: [
+                    Text(
+                      model.price.toString(),
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5.0,
+                    ),
+                    if (model.discount != 0 && isOldPrice)
+                    Text(
+                      model.oldPrice.toString(),
+                      style: const TextStyle(
+                        fontSize: 10.0,
+                        color: Colors.grey,
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(onPressed: ()
+                    {
+
+                      ShopCubit.get(context).changeFavourite(model.id);
+
+                    }, icon: CircleAvatar(
+
+                      radius: 20.0,
+                      backgroundColor:
+                              ShopCubit.get(context).favourites[model.id]!? Colors.red: Colors.grey,
+
+                        child: const Icon(Icons.favorite_border, color: Colors.white,)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+  );
+
+}
