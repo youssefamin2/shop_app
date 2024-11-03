@@ -23,6 +23,7 @@ class ProductsScreen extends StatelessWidget {
           }
         }
       },
+
       builder: (context, state) {
         return ConditionalBuilder(
             condition: ShopCubit.get(context).homeModel != null&&ShopCubit.get(context).categoriesModel!=null,
