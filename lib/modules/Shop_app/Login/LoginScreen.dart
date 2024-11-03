@@ -93,10 +93,11 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20.0,
                         ),
-                        // Password TextFormField change it to defaultformfeild and try it
                         defaultFormFeild(
                           controller: passwordController,
                           type: TextInputType.visiblePassword,
+                            suffix: ShopLoginCubit.get(context).suffix,
+                          isPassword: ShopLoginCubit.get(context).isPassword,
                           validate: (String? value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your password';
@@ -105,7 +106,11 @@ class LoginScreen extends StatelessWidget {
                           },
                           label: 'Enter the Password',
                           prefix: Icons.lock_outline,
-                          suffix: Icons.remove_red_eye,
+
+                          suffixPressed: ()
+                          {
+                            ShopLoginCubit.get(context).changePasswordVisibility();
+                          }
                         ),
                         const SizedBox(
                           height: 30.0,

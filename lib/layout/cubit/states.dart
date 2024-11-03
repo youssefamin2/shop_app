@@ -14,29 +14,20 @@ class ShopSuccessHomeDataStates extends ShopStates {}
 
 class ShopErrorHomeDataStates extends ShopStates {}
 
-
-
 class ShopLoadingCategoriesDataStates extends ShopStates {}
 
 class ShopSuccessCategoriesDataStates extends ShopStates {}
 
 class ShopErrorCategoriesDataStates extends ShopStates {}
 
-
-
 class ShopLoadingUserDataStates extends ShopStates {}
 
-class ShopSuccessUserDataStates extends ShopStates
-{
+class ShopSuccessUserDataStates extends ShopStates {
   final LoginModel loginModel;
   ShopSuccessUserDataStates(this.loginModel);
 }
 
 class ShopErrorUserDataStates extends ShopStates {}
-
-
-
-
 
 class ShopLoadingUpdateUserStates extends ShopStates {}
 
@@ -48,25 +39,18 @@ class ShopSuccessUpdateUserStates extends ShopStates {
 
 class ShopErrorUpdateUserStates extends ShopStates {}
 
-
-
 class ShopChangeFavoritesState extends ShopStates {}
 
-class ShopSuccessChangeFavoritesState extends ShopStates
-{
+class ShopSuccessChangeFavoritesState extends ShopStates {
   final ChangeFavouritesModel model;
 
   ShopSuccessChangeFavoritesState(this.model);
-
 }
 
 class ShopErrorChangeFavoritesState extends ShopStates {}
-
-
 
 class ShopLoadingGetFavoritesStates extends ShopStates {}
 
 class ShopSuccessGetFavoritesStates extends ShopStates {}
 
 class ShopErrorGetFavoritesStates extends ShopStates {}
-

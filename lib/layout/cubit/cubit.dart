@@ -21,7 +21,7 @@ class ShopCubit extends Cubit<ShopStates> {
   int currentIndex = 0;
 
   List<Widget> bottomScreens = [
-     const ProductsScreen(),
+    const ProductsScreen(),
     CateogriesScreen(),
     FavoritesScreen(),
     SettingsScreen(),
@@ -72,8 +72,6 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-
-
   void updateUserdata({
     required String name,
     required String email,
@@ -104,8 +102,7 @@ class ShopCubit extends Cubit<ShopStates> {
       changeFavouritesModel = ChangeFavouritesModel.fromJson(value.data);
       if (!changeFavouritesModel!.status!) {
         favourites[productID] = !favourites[productID]!;
-      } else
-      {
+      } else {
         getFavourite();
       }
 

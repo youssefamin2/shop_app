@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tutorial/modules/Shop_app/Login/cubit/states.dart';
 import 'package:tutorial/shared/components/constants.dart';
@@ -15,13 +16,21 @@ class ShopLoginCubit extends Cubit<ShopLoginStates> {
     DioHelper.PostData(url: LOGIN, data: {'email': email, 'password': password})
         .then((value) {
       loginModel = LoginModel.fromJson(value.data);
-      print(loginModel?.status);
-      print(loginModel?.message);
-      print(loginModel?.data?.token);
       emit(SuccessShopLoginState(loginModel!));
     }).catchError((error) {
       emit(ErrorShopLoginState(error.toString()));
-      print(error.toString());
     });
+  }
+
+  bool isPassword=true;
+  IconData suffix=Icons.visibility_outlined;
+  void changePasswordVisibility()
+  {
+    isPassword=!isPassword;
+
+    suffix=isPassword?Icons.visibility_outlined: Icons.visibility_off_outlined ;
+    emit(ShopChangePasswordVisibilityState());
+
+
   }
 }

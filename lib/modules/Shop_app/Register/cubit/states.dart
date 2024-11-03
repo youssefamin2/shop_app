@@ -19,3 +19,5 @@ class ShopRegisterErrorState extends ShopRegisterStates
 
   ShopRegisterErrorState(this.error);
 }
+
+class ShopChangePasswordVisibilityState extends ShopRegisterStates{}

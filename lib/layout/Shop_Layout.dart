@@ -7,13 +7,9 @@ import 'cubit/states.dart';
 class ShopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ShopCubit,ShopStates>(
-      listener: (context,state)
-      {
-
-      },
-      builder: (context,state)
-      {
+    return BlocConsumer<ShopCubit, ShopStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
         var cubit = ShopCubit.get(context);
         return Scaffold(
           appBar: AppBar(
@@ -23,12 +19,10 @@ class ShopLayout extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: cubit.currentIndex,
-            onTap: (value)
-            {
+            onTap: (value) {
               cubit.changeBottomNav(value);
-
             },
-            items:const [
+            items: const [
               BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
               BottomNavigationBarItem(
                   label: 'categories', icon: Icon(Icons.apps)),

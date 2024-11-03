@@ -15,7 +15,7 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-   token = CacheHelper.getdata(key: 'token');
+  token = CacheHelper.getdata(key: 'token');
   print(token);
   Widget initialScreen;
   if (token != null) {
@@ -23,8 +23,7 @@ Future<void> main() async {
   } else {
     initialScreen = LoginScreen();
   }
-  runApp(
-      MyApp(
+  runApp(MyApp(
     initialScreen: initialScreen,
   ));
 }
@@ -37,7 +36,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>ShopCubit()..getHomeData()..categoriesData()..GetuserData()..getFavourite(),
+      create: (BuildContext context) => ShopCubit()
+        ..getHomeData()
+        ..categoriesData()
+        ..GetuserData()
+        ..getFavourite(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

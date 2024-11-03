@@ -120,15 +120,25 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         defaultFormFeild(
                             controller: passwordController,
-                            type: TextInputType.text,
-                            validate: (value) {
+                            type: TextInputType.visiblePassword,
+                          suffix: ShopRegisterCubit.get(context).suffix,
+
+                          isPassword:  ShopRegisterCubit.get(context).isPassword,
+                          suffixPressed: ()
+                          {
+                            ShopRegisterCubit.get(context).changePasswordVisibility();
+                          },
+                          validate: (value) {
                               if (value!.isEmpty) {
                                 return 'Please don\'t let me empty';
                               }
                               return null;
                             },
                             label: 'password',
-                            prefix: Icons.lock),
+                            prefix: Icons.lock,
+
+
+                        ),
                         const SizedBox(
                           height: 20.0,
                         ),
